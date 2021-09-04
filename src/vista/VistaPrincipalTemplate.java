@@ -27,19 +27,18 @@ public class VistaPrincipalTemplate extends JFrame {
     private void crearPaneles() {
 
         pBarraSuperior = new JPanel();
-        pBarraSuperior.setBounds(0, 0, 910, 50);  
+        pBarraSuperior.setBounds(0, 0, 800, 50);  
         pBarraSuperior.setLayout(null);
         this.add(pBarraSuperior);
 
         pMedio = new JPanel();
-        pMedio.setBounds(0, 50, 910, 150);
+        pMedio.setBounds(0, 50, 800, 150);
         pMedio.setLayout(null);
         this.add(pMedio);
 
         pDatos = new JPanel();
-        pDatos.setBounds(0, 200, 910, 300);
+        pDatos.setBounds(0, 200, 800, 300);
         pDatos.setLayout(null);
-        pDatos.setBackground(Color.BLUE);
 
         this.add(pDatos);
     }

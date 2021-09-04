@@ -27,7 +27,7 @@ public class BarraSuperiorTemplate extends JPanel {
         lTitulo = new JLabel("Te reto a programarlo S.A.S.");
         lTitulo.setBounds( 255, 10, 350, 30);
         lTitulo.setHorizontalAlignment(SwingConstants.CENTER);
-        lTitulo.setFont(new Font("Milton Keynes", Font.BOLD, 20));
+        lTitulo.setFont(new Font("Milton Keynes", Font.BOLD, 22));
         lTitulo.setForeground(Color.WHITE);
         this.add(lTitulo);
 
