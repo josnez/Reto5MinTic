@@ -1,19 +1,21 @@
 package vista;
 
 import vista.componentes.barraSuperior.BarraSuperiorComponent;
-import vista.componentes.panelResultado.PanelResultadoComponent;
+import vista.componentes.panelBusquedas.PanelBusquedasComponent;
 
 public class VistaPrincipalComponent {
     
     private VistaPrincipalTemplate vistaPrincipalTemplate;
     private BarraSuperiorComponent barraSuperiorComponent;
-    private PanelResultadoComponent panelResultadoComponent;
+    private PanelBusquedasComponent panelBusquedasComponent;
 
     public VistaPrincipalComponent() {
 
         vistaPrincipalTemplate = new VistaPrincipalTemplate();
         barraSuperiorComponent = new BarraSuperiorComponent(this);
+        panelBusquedasComponent = new PanelBusquedasComponent();
         vistaPrincipalTemplate.gPBarraSuperior().add(barraSuperiorComponent.gBarraSuperiorTemplate());
+        vistaPrincipalTemplate.gPMedio().add(panelBusquedasComponent.gPanelResultadoTemplate());
         vistaPrincipalTemplate.repaint();
     }
 

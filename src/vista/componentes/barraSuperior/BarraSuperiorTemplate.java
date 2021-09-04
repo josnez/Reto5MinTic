@@ -25,14 +25,14 @@ public class BarraSuperiorTemplate extends JPanel {
     public BarraSuperiorTemplate(BarraSuperiorComponent barraSuperiorComponent) {
 
         lTitulo = new JLabel("Te reto a programarlo S.A.S.");
-        lTitulo.setBounds( 305, 10, 300, 30);
+        lTitulo.setBounds( 255, 10, 350, 30);
         lTitulo.setHorizontalAlignment(SwingConstants.CENTER);
         lTitulo.setFont(new Font("Milton Keynes", Font.BOLD, 20));
         lTitulo.setForeground(Color.WHITE);
         this.add(lTitulo);
 
         bCerrar = new JButton();
-        bCerrar.setBounds(880, 0, 30, 30);      
+        bCerrar.setBounds(770, 0, 30, 30);      
         bCerrar.addActionListener(barraSuperiorComponent);
         bCerrar.setFocusable(false);
         bCerrar.setContentAreaFilled(false);
@@ -44,7 +44,7 @@ public class BarraSuperiorTemplate extends JPanel {
         bCerrar.addMouseListener(barraSuperiorComponent);
         this.add(bCerrar);
 
-        this.setSize(910, 50);
+        this.setSize(800, 50);
         this.setLayout(null);
         this.setBackground(new Color(46, 46, 46));
         this.addMouseListener(barraSuperiorComponent);

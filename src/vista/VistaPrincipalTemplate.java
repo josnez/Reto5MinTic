@@ -1,5 +1,7 @@
 package vista;
 
+import java.awt.Color;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -9,13 +11,13 @@ public class VistaPrincipalTemplate extends JFrame {
      *
      */
     private static final long serialVersionUID = 1L;
-    private JPanel pBarraSuperior, pCentral, pRecorridos;
+    private JPanel pBarraSuperior, pMedio, pDatos;
     
     public VistaPrincipalTemplate() {
 
         crearPaneles();
 
-        this.setSize(910, 410);
+        this.setSize(800, 500);
         this.setLayout(null);
         this.setLocationRelativeTo(this);
         this.setUndecorated(true);
@@ -29,40 +31,29 @@ public class VistaPrincipalTemplate extends JFrame {
         pBarraSuperior.setLayout(null);
         this.add(pBarraSuperior);
 
-        pCentral = new JPanel();
-        pCentral.setBounds(0, 50, 910, 360);
-        pCentral.setLayout(null);
-        this.add(pCentral);
+        pMedio = new JPanel();
+        pMedio.setBounds(0, 50, 910, 150);
+        pMedio.setLayout(null);
+        this.add(pMedio);
 
-        pRecorridos = new JPanel();
-        pRecorridos.setBounds(0, 410, 910, 275);
-        pRecorridos.setLayout(null);
-        pRecorridos.setVisible(false);
-        this.add(pRecorridos);
-    }
+        pDatos = new JPanel();
+        pDatos.setBounds(0, 200, 910, 300);
+        pDatos.setLayout(null);
+        pDatos.setBackground(Color.BLUE);
 
-    public void aumentarFrame() {
-        this.setLocation(this.getX(), this.getY() - 125);
-        this.setSize(this.getWidth(), this.getHeight() + 275);
-        pRecorridos.setVisible(true);
-    }
-
-    public void disminuirFrame() {
-        this.setLocation(this.getX(), this.getY() + 125);
-        this.setSize(this.getWidth(), this.getHeight() - 275);
-        pRecorridos.setVisible(false);
+        this.add(pDatos);
     }
 
     public JPanel gPBarraSuperior() {
         return pBarraSuperior;
     }
 
-    public JPanel gPCentral() {
-        return pCentral;
+    public JPanel gPMedio() {
+        return pMedio;
     }
 
-    public JPanel gPRecorridos() {
-        return pRecorridos;
+    public JPanel gPDatos() {
+        return pDatos;
     }
 
 	public void moverFrame(int i, int j) {
