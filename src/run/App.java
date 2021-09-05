@@ -1,6 +1,6 @@
 package run;
 
-import vista.VistaPrincipalComponent;
+import view.VistaPrincipalComponent;
 
 public class App {
     public static void main(String[] args) {

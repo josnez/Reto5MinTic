@@ -1,9 +1,10 @@
-package vista;
+package view;
 
-import vista.componentes.barraSuperior.BarraSuperiorComponent;
-import vista.componentes.panelBusquedas.PanelBusquedasComponent;
-import vista.componentes.panelIngresarCliente.PanelIngresarClienteComponent;
-import vista.componentes.panelTabla.PanelTablaComponent;
+import controlador.DatosIniciales;
+import view.componentes.barraSuperior.BarraSuperiorComponent;
+import view.componentes.panelBusquedas.PanelBusquedasComponent;
+import view.componentes.panelIngresarCliente.PanelIngresarClienteComponent;
+import view.componentes.panelTabla.PanelTablaComponent;
 
 public class VistaPrincipalComponent {
     
@@ -12,14 +13,16 @@ public class VistaPrincipalComponent {
     private PanelBusquedasComponent panelBusquedasComponent;
     private PanelIngresarClienteComponent panelIngresarClienteComponent;
     private PanelTablaComponent panelTablaComponent;
+    private DatosIniciales datosIniciales;
 
     public VistaPrincipalComponent() {
 
+        datosIniciales = new DatosIniciales();
         vistaPrincipalTemplate = new VistaPrincipalTemplate();
         barraSuperiorComponent = new BarraSuperiorComponent(this);
-        panelBusquedasComponent = new PanelBusquedasComponent(this);
-        panelIngresarClienteComponent = new PanelIngresarClienteComponent(this);
-        panelTablaComponent = new PanelTablaComponent();
+        panelBusquedasComponent = new PanelBusquedasComponent(this, datosIniciales);
+        panelIngresarClienteComponent = new PanelIngresarClienteComponent(this, datosIniciales);
+        panelTablaComponent = new PanelTablaComponent(datosIniciales);
         vistaPrincipalTemplate.gPBarraSuperior().add(barraSuperiorComponent.gBarraSuperiorTemplate());
         vistaPrincipalTemplate.gPMedio().add(panelBusquedasComponent.gPanelBusquedasTemplate());
         vistaPrincipalTemplate.gPDatos().add(panelTablaComponent.gPanelTablaTemplate());

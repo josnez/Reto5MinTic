@@ -1,0 +1,9 @@
+{
+    "java.project.sourcePaths": ["src"],
+    "java.project.outputPath": "bin",
+    "java.project.referencedLibraries": [
+        "lib/*.jar",
+        "/home/josnow/Documents/Min Tic/ProgramacionJava/Reto 5/libs/json-simple-1.1.1.jar",
+        "/home/josnow/Documents/Min Tic/ProgramacionJava/Reto 5/libs/mysql-connector-java-8.0.26.jar"
+    ]
+}

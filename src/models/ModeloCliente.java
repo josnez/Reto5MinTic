@@ -1,13 +1,13 @@
-package modelo;
+package models;
 
 public class ModeloCliente {
     
     private int id;
     private String nombre;
     private String apellido;
-    private String telefono;
+    private int telefono;
     
-    public ModeloCliente(int id, String nombre, String apellido, String telefono) {
+    public ModeloCliente(int id, String nombre, String apellido, int telefono) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -34,13 +34,15 @@ public class ModeloCliente {
         this.apellido = apellido;
     }
 
-    public String getTelefono() {
+    public int getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(String telefono) {
+    public void setTelefono(int telefono) {
         this.telefono = telefono;
     }
 
-    
+    public String toString() {
+        return nombre;
+    }
 }

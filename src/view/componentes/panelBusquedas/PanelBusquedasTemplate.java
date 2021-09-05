@@ -1,12 +1,16 @@
-package vista.componentes.panelBusquedas;
+package view.componentes.panelBusquedas;
 
 import javax.swing.BorderFactory;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
+import controlador.DatosIniciales;
+import models.ModeloProducto;
 
 import java.awt.Color;
 import java.awt.Cursor;
@@ -22,19 +26,18 @@ public class PanelBusquedasTemplate extends JPanel {
     private JLabel lblMarcas, lblNombreCliente;
     private JButton btnBuscar, btnIngresarNuevaCompra;
     private JTextField txtNombreCliente;
-    private JComboBox cmbMarcas;
-    private Color colorFuenteN, colorFuenteG;
+    private JComboBox<ModeloProducto> cmbMarcas;
+    private Color colorFuenteN;
 
     private Font fuente16, fuente, fuenteG;
 
-    public PanelBusquedasTemplate(PanelBusquedasComponent panelBusquedasComponent) {
+    public PanelBusquedasTemplate(PanelBusquedasComponent panelBusquedasComponent, DatosIniciales datosIniciales) {
 
         String nombreFuente = "Comic Sans MS";
         fuenteG = new Font(nombreFuente, Font.PLAIN, 17);
         fuente16 = new Font(nombreFuente, Font.BOLD, 16);
         fuente = new Font(nombreFuente, Font.BOLD, 15);
         colorFuenteN = new Color(12, 36, 47);
-        colorFuenteG = new Color(0, 0, 0);
 
         lblMarcas = new JLabel("Marcas:");
         lblMarcas.setBounds(40, 30, 140, 30);
@@ -42,9 +45,11 @@ public class PanelBusquedasTemplate extends JPanel {
         lblMarcas.setFont(fuente);
         this.add(lblMarcas);
 
-        cmbMarcas = new JComboBox<String>();
+        cmbMarcas = new JComboBox<>();
         cmbMarcas.setBounds(185, 30, 100, 30);
         cmbMarcas.setFont(fuente);
+        cmbMarcas.setModel(new DefaultComboBoxModel<>(
+                datosIniciales.getProductos().toArray(new ModeloProducto[datosIniciales.getProductos().size()])));
         this.add(cmbMarcas);
 
         lblNombreCliente = new JLabel("Nombre del cliente:");
@@ -85,7 +90,7 @@ public class PanelBusquedasTemplate extends JPanel {
         this.setSize(800, 150);
         this.setLayout(null);
         this.setBorder(BorderFactory.createTitledBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, new Color(46, 46, 46)),
-                "Realiaza tu Busqueda", SwingConstants.LEFT, 0, fuenteG, colorFuenteN));
+                "Realiazar busqueda", SwingConstants.LEFT, 0, fuenteG, colorFuenteN));
         this.setBackground(new Color(208, 217, 232));
     }
 

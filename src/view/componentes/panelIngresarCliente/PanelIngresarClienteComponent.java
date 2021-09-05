@@ -1,18 +1,19 @@
-package vista.componentes.panelIngresarCliente;
+package view.componentes.panelIngresarCliente;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import vista.VistaPrincipalComponent;
+import controlador.DatosIniciales;
+import view.VistaPrincipalComponent;
 
 public class PanelIngresarClienteComponent implements ActionListener {
 
     private PanelIngresarClienteTemplate panelIngresarClienteTemplate;
     private VistaPrincipalComponent vistaPrincipalComponent;
     
-    public PanelIngresarClienteComponent(VistaPrincipalComponent vistaPrincipalComponent) {
+    public PanelIngresarClienteComponent(VistaPrincipalComponent vistaPrincipalComponent, DatosIniciales datosIniciales) {
 
-        panelIngresarClienteTemplate = new PanelIngresarClienteTemplate(this);
+        panelIngresarClienteTemplate = new PanelIngresarClienteTemplate(this, datosIniciales);
         this.vistaPrincipalComponent = vistaPrincipalComponent;
     }
 

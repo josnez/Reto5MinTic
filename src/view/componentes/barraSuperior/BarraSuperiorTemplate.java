@@ -1,4 +1,4 @@
-package vista.componentes.barraSuperior;
+package view.componentes.barraSuperior;
 
 import java.awt.Color;
 import java.awt.Cursor;

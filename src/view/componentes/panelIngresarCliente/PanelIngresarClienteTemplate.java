@@ -1,12 +1,17 @@
-package vista.componentes.panelIngresarCliente;
+package view.componentes.panelIngresarCliente;
 
 import javax.swing.BorderFactory;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
+import controlador.DatosIniciales;
+import models.ModeloCliente;
+import models.ModeloProducto;
 
 import java.awt.Color;
 import java.awt.Cursor;
@@ -15,13 +20,15 @@ import java.awt.Font;
 public class PanelIngresarClienteTemplate extends JPanel {
 
     private JLabel lCliente, lMoto, lFecha, lID;
-    private JComboBox<String> cbxClientes, cbxMotos;
+    private JComboBox<ModeloCliente> cbxClientes;
+    private JComboBox<ModeloProducto> cbxMotos;
     private JTextField tFecha, tID;
     private JButton bIngresarVenta, bIrABusquedas;
     private Font fuente, fuenteBotones;
     private Color colorFuenteN;
 
-    public PanelIngresarClienteTemplate(PanelIngresarClienteComponent panelIngresarClienteComponent) {
+    public PanelIngresarClienteTemplate(PanelIngresarClienteComponent panelIngresarClienteComponent,
+            DatosIniciales datosIniciales) {
 
         String nombreFuente = "Comic Sans MS";
         fuente = new Font(nombreFuente, Font.BOLD, 15);
@@ -37,6 +44,9 @@ public class PanelIngresarClienteTemplate extends JPanel {
         cbxClientes = new JComboBox<>();
         cbxClientes.setBounds(105, 40, 100, 30);
         cbxClientes.setFont(fuente);
+        cbxClientes.setModel(new DefaultComboBoxModel<>(
+                datosIniciales.getClientes().toArray(new ModeloCliente[datosIniciales.getClientes().size()])));
+        cbxClientes.setSelectedIndex(0);
         this.add(cbxClientes);
 
         lMoto = new JLabel("Moto:");
@@ -48,6 +58,9 @@ public class PanelIngresarClienteTemplate extends JPanel {
         cbxMotos = new JComboBox<>();
         cbxMotos.setBounds(105, 80, 100, 30);
         cbxMotos.setFont(fuente);
+        cbxMotos.setModel(new DefaultComboBoxModel<>(
+                datosIniciales.getProductos().toArray(new ModeloProducto[datosIniciales.getProductos().size()])));
+        
         this.add(cbxMotos);
 
         lFecha = new JLabel("Fecha:");
@@ -100,11 +113,11 @@ public class PanelIngresarClienteTemplate extends JPanel {
         bIrABusquedas.addActionListener(panelIngresarClienteComponent);
         this.add(bIrABusquedas);
 
-
         this.setSize(800, 150);
         this.setLayout(null);
-        this.setBorder(BorderFactory.createTitledBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, new Color(46, 46, 46)),
-                "Ingresa tu venta", SwingConstants.LEFT, 0, new Font(nombreFuente, Font.PLAIN, 17), colorFuenteN));
+        this.setBorder(BorderFactory.createTitledBorder(
+                BorderFactory.createMatteBorder(2, 2, 2, 2, new Color(46, 46, 46)), "Ingresar venta",
+                SwingConstants.LEFT, 0, new Font(nombreFuente, Font.PLAIN, 17), colorFuenteN));
         this.setBackground(new Color(208, 217, 232));
     }
 }

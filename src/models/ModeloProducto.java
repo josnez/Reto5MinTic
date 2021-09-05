@@ -1,4 +1,4 @@
-package modelo;
+package models;
 
 public class ModeloProducto {
     
@@ -23,7 +23,7 @@ public class ModeloProducto {
     public void setReferencia(String referencia) {
         this.referencia = referencia;
     }
-
+    
     public Double getCosto() {
         return costo;
     }
@@ -31,4 +31,8 @@ public class ModeloProducto {
     public void setCosto(Double costo) {
         this.costo = costo;
     }    
+
+    public String toString() {
+        return referencia;
+    }
 }

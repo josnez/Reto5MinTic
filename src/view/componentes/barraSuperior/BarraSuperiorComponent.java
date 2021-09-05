@@ -1,4 +1,4 @@
-package vista.componentes.barraSuperior;
+package view.componentes.barraSuperior;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -7,7 +7,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
-import vista.VistaPrincipalComponent;
+import view.VistaPrincipalComponent;
 
 public class BarraSuperiorComponent implements ActionListener, MouseListener, MouseMotionListener {
 

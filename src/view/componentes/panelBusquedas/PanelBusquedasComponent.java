@@ -1,19 +1,19 @@
-package vista.componentes.panelBusquedas;
+package view.componentes.panelBusquedas;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
-import vista.VistaPrincipalComponent;
+import controlador.DatosIniciales;
+import view.VistaPrincipalComponent;
 
 public class PanelBusquedasComponent implements ActionListener {
     
     private PanelBusquedasTemplate panelResultadoTemplate;
     private VistaPrincipalComponent vistaPrincipalComponent;
 
-    public PanelBusquedasComponent(VistaPrincipalComponent vistaPrincipalComponent) {
+    public PanelBusquedasComponent(VistaPrincipalComponent vistaPrincipalComponent, DatosIniciales datosIniciales) {
 
-        panelResultadoTemplate = new PanelBusquedasTemplate(this);
+        panelResultadoTemplate = new PanelBusquedasTemplate(this, datosIniciales);
         this.vistaPrincipalComponent = vistaPrincipalComponent;
     }
 
