@@ -1,9 +1,13 @@
 package view;
 
+import java.util.List;
+
+import access.DAOVenta;
 import controlador.DatosIniciales;
+import models.ModeloVenta;
 import view.componentes.barraSuperior.BarraSuperiorComponent;
 import view.componentes.panelBusquedas.PanelBusquedasComponent;
-import view.componentes.panelIngresarCliente.PanelIngresarClienteComponent;
+import view.componentes.panelIngresarVenta.PanelIngresarVentaComponent;
 import view.componentes.panelTabla.PanelTablaComponent;
 
 public class VistaPrincipalComponent {
@@ -11,17 +15,19 @@ public class VistaPrincipalComponent {
     private VistaPrincipalTemplate vistaPrincipalTemplate;
     private BarraSuperiorComponent barraSuperiorComponent;
     private PanelBusquedasComponent panelBusquedasComponent;
-    private PanelIngresarClienteComponent panelIngresarClienteComponent;
+    private PanelIngresarVentaComponent panelIngresarClienteComponent;
     private PanelTablaComponent panelTablaComponent;
     private DatosIniciales datosIniciales;
+    private DAOVenta daoVenta;
 
     public VistaPrincipalComponent() {
 
         datosIniciales = new DatosIniciales();
+        daoVenta = new DAOVenta();
         vistaPrincipalTemplate = new VistaPrincipalTemplate();
         barraSuperiorComponent = new BarraSuperiorComponent(this);
-        panelBusquedasComponent = new PanelBusquedasComponent(this, datosIniciales);
-        panelIngresarClienteComponent = new PanelIngresarClienteComponent(this, datosIniciales);
+        panelBusquedasComponent = new PanelBusquedasComponent(this, datosIniciales, daoVenta);
+        panelIngresarClienteComponent = new PanelIngresarVentaComponent(this, datosIniciales, daoVenta);
         panelTablaComponent = new PanelTablaComponent(datosIniciales);
         vistaPrincipalTemplate.gPBarraSuperior().add(barraSuperiorComponent.gBarraSuperiorTemplate());
         vistaPrincipalTemplate.gPMedio().add(panelBusquedasComponent.gPanelBusquedasTemplate());
@@ -39,11 +45,17 @@ public class VistaPrincipalComponent {
 
     public void cambiarVista(String vista) {
         vistaPrincipalTemplate.gPMedio().removeAll();
-        if (vista.equals("Ingresar Nueva Venta")) {
+        if (vista.equals("Ingresar Nueva Venta") || vista.equals("Modificar Una Venta")) {
+            
+            panelIngresarClienteComponent.modo(vista);
             vistaPrincipalTemplate.gPMedio().add(panelIngresarClienteComponent.gPanelIngresarClienteTemplate());
         } else {
             vistaPrincipalTemplate.gPMedio().add(panelBusquedasComponent.gPanelBusquedasTemplate());
         }
         vistaPrincipalTemplate.gPMedio().repaint();
+    }
+
+    public void enviarDatosATabla(List<ModeloVenta> ventas) {
+        panelTablaComponent.enviarDatosATabla(ventas);
     }
 }

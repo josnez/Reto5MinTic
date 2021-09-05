@@ -1,6 +1,9 @@
 package view.componentes.panelTabla;
 
+import java.util.List;
+
 import controlador.DatosIniciales;
+import models.ModeloVenta;
 
 public class PanelTablaComponent {
 
@@ -15,4 +18,7 @@ public class PanelTablaComponent {
         return panelTablaTemplate;
     }
     
+    public void enviarDatosATabla(List<ModeloVenta> ventas) {
+        panelTablaTemplate.agregarDatosATabla(ventas);
+    }
 }
