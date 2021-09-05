@@ -25,7 +25,7 @@ public class DAOVenta {
             if (conn == null)
                 conn = ConexionBD.getConexion();
 
-            sql = "SELECT ventas.id_venta, ventas.fecha, clientes.nombre, clientes.apellido, clientes.telefono, productos.referencia, productos.costo\n"
+            sql = "SELECT ventas.id_venta, ventas.fecha, clientes. id_cli, clientes.nombre, clientes.apellido, clientes.telefono, productos.id_producto, productos.referencia, productos.costo\n"
                     + "FROM ventas\n" + "JOIN clientes ON clientes.id_cli=ventas.id_cliente\n"
                     + "JOIN productos ON productos.id_producto=ventas.id_moto;";
 
@@ -33,8 +33,9 @@ public class DAOVenta {
             ResultSet result = statement.executeQuery(sql);
 
             while (result.next()) {
-                ModeloVenta venta = new ModeloVenta(result.getInt(1), result.getDate(2), result.getString(3),
-                        result.getString(4), result.getInt(5), result.getString(6), result.getDouble(7));
+                ModeloVenta venta = new ModeloVenta(result.getInt(1), result.getDate(2), result.getInt(3),
+                        result.getString(4), result.getString(5), result.getInt(6), result.getInt(7),
+                        result.getString(8), result.getDouble(9));
                 ventas.add(venta);
             }
 
@@ -46,14 +47,13 @@ public class DAOVenta {
     }
 
     public List<ModeloVenta> getFilteredArtPieces(int idProducto, String nombreCliente) {
-        List<ModeloVenta> ventasFiltradas = new ArrayList();
+        List<ModeloVenta> ventasFiltradas = new ArrayList<>();
         boolean busquedaConProducto = false;
-        System.out.println("Id producto: " + idProducto);
         try {
             if (conn == null)
                 conn = ConexionBD.getConexion();
 
-            sql = "SELECT ventas.id_venta, ventas.fecha, clientes.nombre, clientes.apellido, clientes.telefono, productos.referencia, productos.costo\n"
+            sql = "SELECT ventas.id_venta, ventas.fecha, clientes. id_cli, clientes.nombre, clientes.apellido, clientes.telefono, productos.id_producto, productos.referencia, productos.costo\n"
                     + "FROM ventas\n" + "JOIN clientes ON clientes.id_cli=ventas.id_cliente\n"
                     + "JOIN productos ON productos.id_producto=ventas.id_moto\n" + "WHERE clientes.nombre LIKE ?";
             if (idProducto != -1) {
@@ -68,8 +68,9 @@ public class DAOVenta {
             ResultSet result = statement.executeQuery();
 
             while (result.next()) {
-                ModeloVenta venta = new ModeloVenta(result.getInt(1), result.getDate(2), result.getString(3),
-                        result.getString(4), result.getInt(5), result.getString(6), result.getDouble(7));
+                ModeloVenta venta = new ModeloVenta(result.getInt(1), result.getDate(2), result.getInt(3),
+                        result.getString(4), result.getString(5), result.getInt(6), result.getInt(7),
+                        result.getString(8), result.getDouble(9));
                 ventasFiltradas.add(venta);
             }
         } catch (SQLException ex) {
@@ -94,7 +95,8 @@ public class DAOVenta {
             if (filasInsertadas > 0)
                 JOptionPane.showMessageDialog(null, "La venta fue agregada exitosamente.");
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Ingresar venta Código : " + e.getErrorCode() + "\nError :" + e.getMessage());
+            JOptionPane.showMessageDialog(null,
+                    "Ingresar venta Código : " + e.getErrorCode() + "\nError :" + e.getMessage());
         }
     }
 
@@ -102,7 +104,7 @@ public class DAOVenta {
         try {
             if (conn == null)
                 conn = ConexionBD.getConexion();
-            sql = "DELETE ventas WHERE id_venta=?";
+            sql = "DELETE FROM ventas WHERE id_venta=?;";
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setInt(1, venta.getIdVenta());
 
@@ -110,7 +112,8 @@ public class DAOVenta {
             if (filasInsertadas > 0)
                 JOptionPane.showMessageDialog(null, "La venta fue eliminada exitosamente.");
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Eliminar venta Código : " + e.getErrorCode() + "\nError :" + e.getMessage());
+            JOptionPane.showMessageDialog(null,
+                    "Eliminar venta Código : " + e.getErrorCode() + "\nError :" + e.getMessage());
         }
     }
 
@@ -118,18 +121,19 @@ public class DAOVenta {
         try {
             if (conn == null)
                 conn = ConexionBD.getConexion();
-            sql = "UPDATE ventas SET id_venta=?, fecha=?, id_cliente=?, id_moto=?";
+            sql = "UPDATE ventas SET fecha=?, id_cliente=?, id_moto=? WHERE id_venta=?";
             PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setInt(1, venta.getIdVenta());
-            statement.setDate(2, venta.getFecha());
-            statement.setInt(3, venta.getIdCliente());
-            statement.setInt(4, venta.getIdProducto());
+            statement.setDate(1, venta.getFecha());
+            statement.setInt(2, venta.getIdCliente());
+            statement.setInt(3, venta.getIdProducto());
+            statement.setInt(4, venta.getIdVenta());
 
             int filasInsertadas = statement.executeUpdate();
             if (filasInsertadas > 0)
                 JOptionPane.showMessageDialog(null, "La venta fue actualizada exitosamente.");
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Actualizar venta Código : " + e.getErrorCode() + "\nError :" + e.getMessage());
+            JOptionPane.showMessageDialog(null,
+                    "Actualizar venta Código : " + e.getErrorCode() + "\nError :" + e.getMessage());
         }
     }
 }

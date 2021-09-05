@@ -21,8 +21,8 @@ public class ModeloVenta {
         this.idProducto = idProducto;
     }
 
-    public ModeloVenta(int idVenta, Date fecha, String nombreCliente, String apellidoCliente, int telefonoCliente,
-            String referencia, Double costo) {
+    public ModeloVenta(int idVenta, Date fecha, int idCliente, String nombreCliente, String apellidoCliente, int telefonoCliente,
+            int idProducto, String referencia, Double costo) {
         this.idVenta = idVenta;
         this.fecha = fecha;
         this.nombreCliente = nombreCliente;
@@ -30,6 +30,8 @@ public class ModeloVenta {
         this.telefonoCliente = telefonoCliente;
         this.referencia = referencia;
         this.costo = costo;
+        this.idCliente = idCliente;
+        this.idProducto = idProducto;
     }
 
     public Date getFecha() {

@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import access.DAOVenta;
 import controlador.DatosIniciales;
 import models.ModeloProducto;
@@ -44,7 +46,13 @@ public class PanelBusquedasComponent implements ActionListener {
             nombreCliente = panelBusquedasTemplate.getTxtNombreCliente().getText();
             ventasFiltradas = daoVenta.getFilteredArtPieces(idProducto, nombreCliente);
             vistaPrincipalComponent.enviarDatosATabla(ventasFiltradas);
-        } 
+        } else {
+            if (vistaPrincipalComponent.obtenerFilaSeleccionada() != -1) {
+                vistaPrincipalComponent.eliminarVenta();
+            } else {
+                JOptionPane.showMessageDialog(null, "Seleccione una venta");
+            }
+        }
     }
 
 }
