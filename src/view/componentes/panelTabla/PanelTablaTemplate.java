@@ -22,9 +22,10 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
-import javax.swing.plaf.basic.BasicScrollBarUI;
 
-import controlador.DatosIniciales;
+import controller.DatosIniciales;
+
+import javax.swing.plaf.basic.BasicScrollBarUI;
 
 public class PanelTablaTemplate extends JPanel {
 

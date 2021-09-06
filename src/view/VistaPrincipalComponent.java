@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 import access.DAOCliente;
 import access.DAOProducto;
 import access.DAOVenta;
-import controlador.DatosIniciales;
+import controller.DatosIniciales;
 import models.ModeloVenta;
 import view.componentes.barraSuperior.BarraSuperiorComponent;
 import view.componentes.panelBusquedas.PanelBusquedasComponent;

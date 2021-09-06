@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import java.sql.Date;
 
 import access.DAOVenta;
-import controlador.DatosIniciales;
+import controller.DatosIniciales;
 import models.ModeloCliente;
 import models.ModeloProducto;
 import models.ModeloVenta;

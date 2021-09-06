@@ -2,7 +2,7 @@ package view.componentes.panelTabla;
 
 import java.util.List;
 
-import controlador.DatosIniciales;
+import controller.DatosIniciales;
 import models.ModeloVenta;
 
 public class PanelTablaComponent {

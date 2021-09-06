@@ -7,7 +7,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import access.DAOVenta;
-import controlador.DatosIniciales;
+import controller.DatosIniciales;
 import models.ModeloProducto;
 import models.ModeloVenta;
 import view.VistaPrincipalComponent;

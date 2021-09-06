@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import controlador.DatosIniciales;
+import controller.DatosIniciales;
 import models.ModeloCliente;
 import models.ModeloProducto;
 import models.ModeloVenta;
